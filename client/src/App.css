@@ -1,3 +1,7 @@
+body{
+  text-align: center;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +39,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.addCustomer{
+  width: 50%;
+  background-color: rgba(200, 200, 200, 1);
+  text-align: center;
+  display: inline-block;
+}
+
+.addCustomerInput {
+  width: 45%;
+  display: inline-block;
+  text-align: left;
+  margin: 5px;
+  min-height: 30px;
+  vertical-align: top;
+}
+
+.addCustomer label{
+  display: inline-block;
+  width: 35%;
+}
+
+.addCustomer button {
+  display: inline-block;
+  margin: 10px 20%;
 }
