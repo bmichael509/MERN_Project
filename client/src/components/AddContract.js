@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { navigate } from "@reach/router";
 
 const AddContract = (props) => {
     const [inputs, setInputs] = useState({
@@ -164,6 +165,7 @@ const AddContract = (props) => {
                 <div className="contractInput">
                     <input type="text" name="notes" id="notes" placeholder="Contract Notes" value={inputs.notes} onChange={(event) => setInputs({ ...inputs, notes: event.target.value })} />
                 </div>
+                <button type="button" onClick={(event) => navigate('/')}>Cancel</button>
                 <button>Submit</button>
             </form>
         </>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { navigate } from "@reach/router";
 import axios from "axios";
 
 const AddCustomer = (props) => {
@@ -197,6 +198,7 @@ const AddCustomer = (props) => {
                     <label htmlFor="financialNotes">Financial Check Notes:</label>
                     <input type="text" name="financialNotes" id="financialNotes" value={inputs.financialNotes} onChange={(event) => setInputs({ ...inputs, financialNotes: event.target.value })} />
                 </div>
+                <button type="button" onClick={(event) => navigate('/')}>Cancel</button>
                 <button>Add Customer!</button>
             </form>
         </>
