@@ -21,7 +21,7 @@ const DepositSchema = new mongoose.Schema(
             required: false
         },
         depositPaid: {
-            type: String,
+            type: Boolean,
             required: [true, "{PATH} is required"]
         },
         depositReturned: {
