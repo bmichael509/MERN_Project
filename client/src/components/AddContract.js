@@ -157,7 +157,7 @@ const AddContract = (props) => {
                         <option value="">Select Unit:</option>
                         {units.map((unit) => {
                             return (
-                                <option value={unit._id}>{unit._id}</option>
+                                <option value={unit._id}>{unit.name}</option>
                             );
                         })}
                     </select>

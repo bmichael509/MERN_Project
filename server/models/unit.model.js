@@ -5,10 +5,14 @@ const UnitType = require("./unitType.model").schema;
 
 const UnitSchema = new mongoose.Schema(
     {
+        name: {
+            type: String,
+            required: [true, "{PATH} is required"],
+        },
         contract: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "Contract",
-            required: [true, "{PATH} is required"],
+            required: false,
         }],
         status: {
             type: String,
@@ -17,7 +21,7 @@ const UnitSchema = new mongoose.Schema(
         unitType: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "UnitType",
-            required: false
+            required: false,
         },
         property: {
             type: mongoose.Schema.Types.ObjectId,
@@ -27,7 +31,7 @@ const UnitSchema = new mongoose.Schema(
         issue: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "Issue",
-            required: false
+            required: false,
         }],
         notes: {
             type: String,
