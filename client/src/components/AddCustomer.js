@@ -5,21 +5,53 @@ const AddCustomer = (props) => {
     const [inputs, setInputs] = useState({
         firstName: "",
         lastName: "",
-        phone: "",
+        phoneNumber: "",
         street: "",
         unitNum: "",
         city: "",
         state: "",
-        zip: "",
+        zipCode: "",
         country: "",
         status: "",
+        financialStatus: "",
         infoVerifiedBy: "",
         notes: "",
+        financialNotes: "",
     })
 
     const addCustomer = (event) => {
         event.preventDefault();
-        console.log("adding customer:", inputs);
+        const newCustomer = {
+            customer: {
+                firstName: inputs.firstName,
+                lastName: inputs.lastName,
+                phoneNumber: inputs.phoneNumber,
+                currentAddress: {
+                    street: inputs.street,
+                    city: inputs.city,
+                    state: inputs.state,
+                    zipCode: inputs.zipCode,
+                    country: inputs.country,
+                },
+                status: inputs.status,
+                notes: inputs.notes,
+            },
+            previousAddress: {
+                street: inputs.street,
+                city: inputs.city,
+                state: inputs.state,
+                zipCode: inputs.zipCode,
+                country: inputs.country,
+            },
+            infoVerifiedBy: inputs.infoVerifiedBy,
+            customerFinancialCheck: {
+                status: inputs.financialStatus,
+                notes: inputs.financialNotes,
+            },
+        };
+        axios.post('http://localhost:8000/api/customers', newCustomer)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
     }
 
     return (
@@ -36,7 +68,7 @@ const AddCustomer = (props) => {
                 </div>
                 <div className="addCustomerInput">
                     <label htmlFor="phone">Phone Number:</label>
-                    <input type="number" name="phone" id="phone" value={inputs.phone} onChange={(event) => setInputs({ ...inputs, phone: event.target.value })} />
+                    <input type="number" name="phone" id="phone" value={inputs.phoneNumber} onChange={(event) => setInputs({ ...inputs, phoneNumber: event.target.value })} />
                 </div>
                 <div className="addCustomerInput">
                     <label htmlFor="street">Street:</label>
@@ -122,8 +154,8 @@ const AddCustomer = (props) => {
                     </select>
                 </div>
                 <div className="addCustomerInput">
-                    <label htmlFor="zip">Zipcode:</label>
-                    <input type="number" name="zip" id="zip" value={inputs.zip} onChange={(event) => setInputs({ ...inputs, zip: event.target.value })} />
+                    <label htmlFor="zipCode">Zipcode:</label>
+                    <input type="number" name="zipCode" id="zipCode" value={inputs.zipCode} onChange={(event) => setInputs({ ...inputs, zipCode: event.target.value })} />
                 </div>
                 <div className="addCustomerInput">
                     <label htmlFor="country">Country:</label>
@@ -143,12 +175,25 @@ const AddCustomer = (props) => {
                     </select>
                 </div>
                 <div className="addCustomerInput">
+                    <label htmlFor="financialStatus">Renter's Status:</label>
+                    <select name="financialStatus" id="financialStatus" value={inputs.financialStatus} onChange={(event) => setInputs({ ...inputs, financialStatus: event.target.value })}>
+                        <option value=""></option>
+                        <option value="pending">Pending</option>
+                        <option value="pass">Pass</option>
+                        <option value="fail">Fail</option>
+                    </select>
+                </div>
+                <div className="addCustomerInput">
                     <label htmlFor="infoVerifiedBy">Info Verified By:</label>
                     <input type="text" name="infoVerifiedBy" id="infoVerifiedBy" value={inputs.infoVerifiedBy} onChange={(event) => setInputs({ ...inputs, infoVerifiedBy: event.target.value })} />
                 </div>
                 <div className="addCustomerInput">
                     <label htmlFor="notes">Additional Notes:</label>
                     <input type="text" name="notes" id="notes" value={inputs.notes} onChange={(event) => setInputs({ ...inputs, notes: event.target.value })} />
+                </div>
+                <div className="addCustomerInput">
+                    <label htmlFor="financialNotes">Financial Check Notes:</label>
+                    <input type="text" name="financialNotes" id="financialNotes" value={inputs.financialNotes} onChange={(event) => setInputs({ ...inputs, financialNotes: event.target.value })} />
                 </div>
                 <button>Add Customer!</button>
             </form>

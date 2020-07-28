@@ -10,11 +10,6 @@ const FinancialCheckSchema = new mongoose.Schema(
             required: [true, "{PATH} is required"],
             minlength: [3, "{PATH} must be at least {MINLENGTH} characters"]
         },
-        result: {
-            type: String,
-            required: [false, "{PATH} is required"],
-            minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
-        },
         notes: {
             type: String,
             required: false,
