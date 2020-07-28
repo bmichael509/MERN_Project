@@ -1,12 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Link, Router, Redirect } from '@reach/router';
 import './App.css';
 import AddCustomer from './components/AddCustomer';
 
 function App() {
   return (
     <>
-      <AddCustomer />
+      <Router>
+        <AddCustomer path="/customers/new" />
+      </Router>
     </>
   );
 }

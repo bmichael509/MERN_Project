@@ -28,6 +28,7 @@ const AddCustomer = (props) => {
                 phoneNumber: inputs.phoneNumber,
                 currentAddress: {
                     street: inputs.street,
+                    unitNum: inputs.unitNum,
                     city: inputs.city,
                     state: inputs.state,
                     zipCode: inputs.zipCode,
@@ -38,6 +39,7 @@ const AddCustomer = (props) => {
             },
             previousAddress: {
                 street: inputs.street,
+                unitNum: inputs.unitNum,
                 city: inputs.city,
                 state: inputs.state,
                 zipCode: inputs.zipCode,
