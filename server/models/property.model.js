@@ -5,7 +5,7 @@ const Address = require("./address.model").schema;
 
 const PropertySchema = new mongoose.Schema(
     {
-        name: {
+        propertyName: {
             type: String,
             required: [true, "{PATH} is required"]
         },
