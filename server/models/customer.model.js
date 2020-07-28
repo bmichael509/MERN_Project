@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const Address = require("./address.model");
-const FinancialCheck = require("./financialCheck.model");
-const Person = require("./person.model");
+const Address = require("./address.model").schema;
+const FinancialCheck = require("./financialCheck.model").schema;
+const Person = require("./person.model").schema;
 
 // {PATH} will insert the name of the key / prop
 

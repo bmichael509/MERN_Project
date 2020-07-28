@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const Address = require("./address.model");
+const Address = require("./address.model").schema;
 
 // {PATH} will insert the name of the key / prop
 
-const CustomerSchema = new mongoose.Schema(
+const PersonSchema = new mongoose.Schema(
     {
         firstName: {
             type: String,
@@ -38,6 +38,6 @@ const CustomerSchema = new mongoose.Schema(
 );
 
 //Creates the cities (auto pluralizes the name) collection and enforces the CitySchema on any new documents that are added to the collection
-const Customer = mongoose.model("Customer", CustomerSchema);
+const Person = mongoose.model("Person", PersonSchema);
 
-module.exports = Customer;
+module.exports = Person;

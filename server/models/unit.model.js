@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const UnitType = require("./unitType.model");
+const UnitType = require("./unitType.model").schema;
 
 // {PATH} will insert the name of the key / prop
 

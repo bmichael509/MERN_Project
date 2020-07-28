@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Deposit = require("./deposit.model");
+const Deposit = require("./deposit.model").schema;
 
 // {PATH} will insert the name of the key / prop
 

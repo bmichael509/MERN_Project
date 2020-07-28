@@ -33,6 +33,6 @@ const UnitTypeSchema = new mongoose.Schema(
 );
 
 //Creates the cities (auto pluralizes the name) collection and enforces the CitySchema on any new documents that are added to the collection
-const UnitType = mongoose.model("UnitType", UnitSchema);
+const UnitType = mongoose.model("UnitType", UnitTypeSchema);
 
 module.exports = UnitType;

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Person = require("./person.model");
+const Person = require("./person.model").schema;
 
 // {PATH} will insert the name of the key / prop
 

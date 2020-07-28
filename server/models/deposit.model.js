@@ -25,7 +25,7 @@ const DepositSchema = new mongoose.Schema(
             required: [true, "{PATH} is required"]
         },
         depositReturned: {
-            type: Deposit,
+            type: Number,
             required: [true, "{PATH} is required"]
         },
         notes: {
