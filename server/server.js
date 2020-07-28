@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }))
 //routesFunc(app)
 
 // Short hand, impor tht efunction from routes.js and immediately execute it
-require("./routes/player.routes")(app)
+require("./routes/employee.routes")(app)
 
 app.listen(port, () => {
     console.log(`Listening on port ${port} for requests to respond to`);
