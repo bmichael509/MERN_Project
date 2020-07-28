@@ -28,6 +28,10 @@ const DepositSchema = new mongoose.Schema(
             type: Number,
             required: [true, "{PATH} is required"]
         },
+        status: {
+            type: String,
+            required: [true, "{PATH} is required"]
+        },
         notes: {
             type: String,
             required: false,
