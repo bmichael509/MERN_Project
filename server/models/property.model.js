@@ -5,6 +5,10 @@ const Address = require("./address.model").schema;
 
 const PropertySchema = new mongoose.Schema(
     {
+        propertyName: {
+            type: String,
+            required: [true, "{PATH} is required"]
+        },
         address: {
             type: Address,
             unique: true,
@@ -20,6 +24,10 @@ const PropertySchema = new mongoose.Schema(
             ref: "Unit",
             required: false,
         }],
+        status: {
+            type: String,
+            required: [true, "{PATH} is required"]
+        },
         notes: {
             type: String,
             required: false,
