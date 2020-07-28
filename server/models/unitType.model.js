@@ -24,6 +24,11 @@ const UnitTypeSchema = new mongoose.Schema(
             type: Number,
             required: [true, "{PATH} is required"],
         },
+        property: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Property",
+            required: [true, "{PATH} is required"],
+        },
         notes: {
             type: String,
             required: false,
