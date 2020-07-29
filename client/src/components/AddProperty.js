@@ -38,8 +38,10 @@ const styles = {
     form: {
         width: "100%"
     }  
+   
 
-}
+
+}  
 
 
 const AddProperty = (props) => {
@@ -55,6 +57,8 @@ const AddProperty = (props) => {
         employee: "",
         notes: "",
     })
+
+    
 
     const addProperty = (event) => {
         event.preventDefault();
