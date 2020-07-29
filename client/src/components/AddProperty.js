@@ -195,6 +195,6 @@ const AddProperty = (props) => {
             </Paper>
         </>
     );
-};
+}; 
 
 export default AddProperty;
