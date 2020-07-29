@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link, Router, Redirect } from '@reach/router';
 import './App.css';
-import AddCustomer from './components/AddCustomer';
+import ViewCustomers from './views/ViewCustomers';
+
 
 function App() {
   return (
     <>
       <Router>
-        <AddCustomer path="/customers/new" />
+        <ViewCustomers path="/admin/customers" />
       </Router>
     </>
   );
