@@ -6,4 +6,5 @@ module.exports = (app) => {
     app.get("/api/properties/:id", propertyControler.getOne);
     app.put("/api/properties/:id", propertyControler.update)
     app.delete("/api/properties/:id", propertyControler.delete);
+    app.get("/api/propertyUnits", propertyUnitControler.getOnePropertyWithUnits);
 }
