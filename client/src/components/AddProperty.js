@@ -58,7 +58,8 @@ const AddProperty = (props) => {
         notes: "",
     })
 
-    
+
+
 
     const addProperty = (event) => {
         event.preventDefault();
