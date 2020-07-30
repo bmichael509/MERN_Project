@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
+import Loading from "../components/Loading";
 
 const ViewContracts = (props) => {
-    const [contracts, setContracts] = useState();
+    const [contracts, setContracts] = useState(null);
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/contracts')
@@ -12,6 +13,12 @@ const ViewContracts = (props) => {
             })
             .catch((err) => console.log(err));
     });
+
+    if (contracts === null) {
+        return (
+            <Loading />
+        );
+    };
 
     return (
         <>

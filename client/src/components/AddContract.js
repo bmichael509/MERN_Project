@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { navigate } from "@reach/router";
+import Loading from "./Loading";
 
 const AddContract = (props) => {
     const [inputs, setInputs] = useState({
@@ -43,6 +44,12 @@ const AddContract = (props) => {
             .then((res) => setUnitTypes(res.data))
             .catch((err) => console.log(err));
     }, []);
+
+    if (unitTypes === null || units === null || customers === null) {
+        return (
+            <Loading />
+        );
+    };
 
     const addContract = (event) => {
         event.preventDefault();

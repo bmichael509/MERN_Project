@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import Loading from "../components/Loading";
 
 const Dashboard = (props) => {
     const [property, setProperty] = useState(null)
@@ -16,7 +17,9 @@ const Dashboard = (props) => {
 
     // If there are no authors display this
     if (property == null) {
-        return (<div>No Units Found</div>)
+        return (
+            <Loading />
+        )
     }
 
     return (

@@ -35,6 +35,12 @@ const AddUnit = (props) => {
             .catch((err) => console.log(err));
     });
 
+    if (contracts === null || unitTypes === null || properties === null || issues === null) {
+        return (
+            <Location />
+        );
+    };
+
     const addUnit = (event) => {
         event.preventDefault();
         const newUnit = {

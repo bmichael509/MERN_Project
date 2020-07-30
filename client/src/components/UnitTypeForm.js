@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
+import Loading from "./Loading";
 
 const UnitTypeForm = (props) => {
     const [inputs, setInputs] = useState({
@@ -20,6 +21,12 @@ const UnitTypeForm = (props) => {
             .then((res) => setProperties(res.data))
             .catch((err) => console.log(err));
     }, []);
+
+    if (properties === null) {
+        return (
+            <Loading />
+        );
+    };
 
     const addUnitType = (event) => {
         event.preventDefault();

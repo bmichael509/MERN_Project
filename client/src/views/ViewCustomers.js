@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
+import Loading from "../components/Loading";
 
 const ViewCustomers = (props) => {
     const [customers, setCustomers] = useState(null);
@@ -16,6 +17,12 @@ const ViewCustomers = (props) => {
             })
             .catch((err) => console.log(err))
     }, [])
+
+    if (customers === null) {
+        return (
+            <Loading />
+        );
+    };
 
     return (
         <>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import axios from "axios";
+import Loading from "../components/Loading";
 
 const UserList = (props) => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(null);
 
   const getLoggedInUser = () => {
     axios
@@ -30,6 +31,12 @@ const UserList = (props) => {
         navigate("/");
       });
   }, []);
+
+  if (users === null) {
+    return (
+      <Loading />
+    );
+  };
 
   return (
     <div className="container">
