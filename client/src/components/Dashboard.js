@@ -34,8 +34,10 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <p>{property.propertyName}</p>
-            <p>{property.address.street}</p>
+            <section className='propertyHeader'>
+                <h1>{property.propertyName}</h1>
+                <h3>{property.address.street}, {property.address.city}, {property.address.state} {property.address.zipCode}</h3>
+            </section>
             <table className='dashboardUnits'>
                 <thead>
                     <tr>

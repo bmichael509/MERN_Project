@@ -71,6 +71,10 @@ body{
   outline: solid pink 1px;
 } */
 
+body{
+  background-color: #fffff0;
+}
+
 .dashboardUnits {
   display: inline-block;
   padding: 5px;
@@ -106,4 +110,14 @@ body{
 }
 .dashboardUnits tbody td a{
   color: #ffffff;
+}
+.propertyHeader h1{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 3rem;
+  margin: 5px;
+}
+.propertyHeader h3{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 2rem;
+  margin: 5px;
 }
