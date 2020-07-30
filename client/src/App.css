@@ -66,3 +66,44 @@ body{
   display: inline-block;
   margin: 10px 20%;
 }
+
+/* *{
+  outline: solid pink 1px;
+} */
+
+.dashboardUnits {
+  display: inline-block;
+  padding: 5px;
+  width: 70%;
+}
+.dashboardUnits thead{
+  margin: 0;
+  width: 100%;
+  display: inline-block;
+  padding: 5px;
+  background-color: #E0E0E0;
+}
+.dashboardUnits thead tr, .dashboardUnits tbody tr{
+  display: inline-block;
+  width: 100%;
+}
+.dashboardUnits thead th, .dashboardUnits tbody td{
+  display: inline-block;
+  width: 14%;
+  margin: 0 auto;
+}
+.dashboardUnits tbody{
+  margin: 0;
+  display: inline-block;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  background-color: #190173;
+  color: #ffffff;
+}
+.dashboardUnits tbody tr{
+  margin: 5px 0;
+}
+.dashboardUnits tbody td a{
+  color: #ffffff;
+}

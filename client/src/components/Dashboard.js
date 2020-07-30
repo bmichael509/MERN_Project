@@ -22,7 +22,7 @@ const Dashboard = (props) => {
 
     const styleStatus = (status) => {
         if (status === 'available') {
-            return { color: 'green' }
+            return { color: '#3AFF00' }
         }
         else if (status === 'rented') {
             return { color: 'red' }
@@ -36,7 +36,7 @@ const Dashboard = (props) => {
         <div>
             <p>{property.propertyName}</p>
             <p>{property.address.street}</p>
-            <table>
+            <table className='dashboardUnits'>
                 <thead>
                     <tr>
                         <th>Unit Number</th>
@@ -48,21 +48,23 @@ const Dashboard = (props) => {
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {units.map((apartment) => {
-                        return (
-                            <tr key={apartment._id}>
-                                <td><Link to={`/units/details/${apartment._id}`}>{apartment.name}</Link></td>
-                                <td>{apartment.unitType.name}</td>
-                                <td>{apartment.unitType.bedrooms}</td>
-                                <td>{apartment.unitType.bathrooms}</td>
-                                <td>{apartment.unitType.squareFootage} sqft</td>
-                                <td>${apartment.unitType.rentalAmount}</td>
-                                <td style={styleStatus(apartment.status)}>{apartment.status}</td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
+                <div>
+                    <tbody>
+                        {units.map((apartment) => {
+                            return (
+                                <tr key={apartment._id}>
+                                    <td><Link to={`/units/details/${apartment._id}`}>{apartment.name}</Link></td>
+                                    <td>{apartment.unitType.name}</td>
+                                    <td>{apartment.unitType.bedrooms}</td>
+                                    <td>{apartment.unitType.bathrooms}</td>
+                                    <td>{apartment.unitType.squareFootage} sqft</td>
+                                    <td>${apartment.unitType.rentalAmount}</td>
+                                    <td style={styleStatus(apartment.status)}>{apartment.status}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </div>
             </table>
         </div>
     )
