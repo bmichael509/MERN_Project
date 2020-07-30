@@ -11,6 +11,7 @@ import NavBar from './components/NavBar';
 import Main from './views/Main';
 import UnitDetails from './views/UnitDetails';
 import Admin from './views/Admin';
+import ViewUnits from './views/ViewUnits';
 
 function App() {
   const logout = () => {
@@ -42,6 +43,7 @@ function App() {
         <Main path="/main" />
         <ViewCustomers path="/admin/customers" />
         <ViewContracts path="/admin/contracts" />
+        <ViewUnits path="/admin/units" />
         <UnitDetails path="/units/details/:_id" />
         <AddCustomer path="/admin/customers/new" />
         <Admin path="/admin" />

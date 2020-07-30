@@ -12,7 +12,7 @@ module.exports = {
             });
     },
     getAll(req, res) {
-        Unit.find()
+        Unit.find().populate({ path: 'unitType' }).populate({ path: 'property' })
             .then((units) => {
                 res.json(units);
             })

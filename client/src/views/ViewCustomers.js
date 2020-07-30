@@ -21,7 +21,11 @@ const ViewCustomers = (props) => {
 
     if (customers === null) {
         return (
-            <Loading />
+            <>
+                <AdminBar />
+                <h2>Customers</h2>
+                <Loading />
+            </>
         );
     };
 
