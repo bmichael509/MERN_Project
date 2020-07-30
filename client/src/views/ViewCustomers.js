@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
 import Loading from "../components/Loading";
+import AdminBar from "../components/AdminBar";
 
 const ViewCustomers = (props) => {
     const [customers, setCustomers] = useState(null);
@@ -26,8 +27,10 @@ const ViewCustomers = (props) => {
 
     return (
         <>
+            <AdminBar />
+            <h2>Customers</h2>
             <Link className="new" to="/admin/customers/new">New</Link>
-            <table>
+            <table className='dashboardUnits'>
                 <thead>
                     <tr>
                         <th>Last Name</th>

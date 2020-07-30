@@ -10,6 +10,7 @@ import axios from "axios";
 import NavBar from './components/NavBar';
 import Main from './views/Main';
 import UnitDetails from './views/UnitDetails';
+import Admin from './views/Admin';
 
 function App() {
   const logout = () => {
@@ -43,6 +44,7 @@ function App() {
         <ViewContracts path="/admin/contracts" />
         <UnitDetails path="/units/details/:_id" />
         <AddCustomer path="/admin/customers/new" />
+        <Admin path="/admin" />
         <LogReg path="/" />
         <UserList path="/users" />
       </Router>

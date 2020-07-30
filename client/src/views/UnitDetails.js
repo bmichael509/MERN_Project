@@ -33,14 +33,15 @@ const UnitDetails = (props) => {
 
     return (
         <>
-            <h3 style={{ margin: '5px 0' }}>Unit: {unit.name}</h3>
-            <h4 style={{ margin: '5px 0' }}>Status: <span style={styleStatus()}>{unit.status}</span></h4>
+            <h1 style={{ margin: '5px 0' }}>Unit: {unit.name}</h1>
+            <h2 style={{ margin: '5px 0' }}>Status: <span style={styleStatus()}>{unit.status}</span></h2>
             <button style={{ margin: '0 0 5px 0' }}>Edit</button>
             <section>
-
-                <table style={{ display: 'inline-block', backgroundColor: '#B8D2E3', padding: '10px 25px' }}>
-                    <h3 style={{ display: 'inline-block', margin: '0 0 5px 0' }}>Unit Type: <span style={{ fontWeight: 'normal' }}>{unit.unitType.name}</span></h3>
+                <table className="dashboardUnits">
                     <thead>
+                        <tr>
+                            <h2>Unit Type: <span>{unit.unitType.name}</span></h2>
+                        </tr>
                         <tr>
                             <th>Bedrooms</th>
                             <th>Bathrooms</th>
