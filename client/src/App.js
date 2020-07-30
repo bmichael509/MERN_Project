@@ -9,6 +9,7 @@ import UserList from "./views/UserList";
 import axios from "axios";
 import NavBar from './components/NavBar';
 import Main from './views/Main';
+import UnitDetails from './views/UnitDetails';
 
 function App() {
   const logout = () => {
@@ -40,6 +41,7 @@ function App() {
         <Main path="/main" />
         <ViewCustomers path="/admin/customers" />
         <ViewContracts path="/admin/contracts" />
+        <UnitDetails path="/units/details/:_id" />
         <AddCustomer path="/admin/customers/new" />
         <LogReg path="/" />
         <UserList path="/users" />

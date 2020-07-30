@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios"
 import Loading from "../components/Loading";
+import { Link } from "@reach/router";
 
 const Dashboard = (props) => {
     const { property } = props;
@@ -11,7 +11,7 @@ const Dashboard = (props) => {
             if (a.name < b.name) { return -1 };
             return (a.name > b.name ? 1 : 0);
         }))
-    }, []);
+    }, [property]);
 
     // If there are no authors display this
     if (property == null || units === null) {
@@ -20,8 +20,17 @@ const Dashboard = (props) => {
         );
     };
 
-
-    console.log(units, "these are all of the units");
+    const styleStatus = (status) => {
+        if (status === 'available') {
+            return { color: 'green' }
+        }
+        else if (status === 'rented') {
+            return { color: 'red' }
+        }
+        else {
+            return { color: 'black' }
+        };
+    };
 
     return (
         <div>
@@ -42,14 +51,14 @@ const Dashboard = (props) => {
                 <tbody>
                     {units.map((apartment) => {
                         return (
-                            <tr key={apartment.unitType._id}>
-                                <td>{apartment.name}</td>
+                            <tr key={apartment._id}>
+                                <td><Link to={`/units/details/${apartment._id}`}>{apartment.name}</Link></td>
                                 <td>{apartment.unitType.name}</td>
                                 <td>{apartment.unitType.bedrooms}</td>
                                 <td>{apartment.unitType.bathrooms}</td>
-                                <td>{apartment.unitType.squareFootage}</td>
-                                <td>{apartment.unitType.rentalAmount}</td>
-                                <td>{apartment.status}</td>
+                                <td>{apartment.unitType.squareFootage} sqft</td>
+                                <td>${apartment.unitType.rentalAmount}</td>
+                                <td style={styleStatus(apartment.status)}>{apartment.status}</td>
                             </tr>
                         )
                     })}

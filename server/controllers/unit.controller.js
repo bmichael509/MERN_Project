@@ -22,7 +22,7 @@ module.exports = {
     },
     getOne(req, res) {
         // Unit.find({_id: req.params.id}) // if you are not going to use findById
-        Unit.findById(req.params.id)
+        Unit.findById(req.params.id).populate({ path: 'unitType' })
             .then((Unit) => {
                 res.json(Unit);
             })

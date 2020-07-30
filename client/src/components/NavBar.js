@@ -21,7 +21,7 @@ const NavBar = (props) => {
     <div >
       <AppBar position="static" color="primary" style={{ position: 'fixed' }}>
         <Tabs
-          fullWidth={true}
+          fullwidth="true"
           indicatorColor="secondary"
           centered
         >
