@@ -7,6 +7,8 @@ import AddCustomer from "./components/AddCustomer";
 import LogReg from "./views/LogReg";
 import UserList from "./views/UserList";
 import axios from "axios";
+import NavBar from './components/NavBar';
+import Main from './views/Main';
 
 function App() {
   const logout = () => {
@@ -29,11 +31,13 @@ function App() {
 
   return (
     <>
+      <NavBar />
       <div className="jumbotron">
         <h1>MERN Users</h1>
         <button onClick={logout}>Logout</button>
       </div>
       <Router>
+        <Main path="/main" />
         <ViewCustomers path="/admin/customers" />
         <ViewContracts path="/admin/contracts" />
         <AddCustomer path="/admin/customers/new" />

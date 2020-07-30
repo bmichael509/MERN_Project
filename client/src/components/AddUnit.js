@@ -76,7 +76,7 @@ const AddUnit = (props) => {
                     <option value="">Select a unit status:</option>
                     <option value="available">Available</option>
                     <option value="rented">Rented</option>
-                    <option value="pending">Pending</option>
+                    <option value="inactive">Inactive</option>
                 </select>
                 <label htmlFor="unitType">Unit Type:</label>
                 <select name="unitType" id="unitType" value={inputs.unitTypeID} onChange={(event) => setInputs({ ...inputs, unitTypeID: event.target.value })}>

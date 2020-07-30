@@ -1,13 +1,13 @@
 const port = 8000;
 const db_name = "propertyManagement";
-const express = require("express"),
-  cookieParser = require("cookie-parser");
+const express = require("express");
+// const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
 
 require("./config/mongoose.config")(db_name);
 
-app.use(cookieParser());
+// app.use(cookieParser());
 
 app.use(cors({ credentials: true, orgin: "http://localhost:3000" }));
 // for our server to receive JSON: req.body will be undefined without this

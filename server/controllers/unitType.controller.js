@@ -8,6 +8,7 @@ module.exports = {
                 res.json(unitType);
             })
             .catch((err) => {
+                console.log(err);
                 res.status(400).json(err);
             });
     },
