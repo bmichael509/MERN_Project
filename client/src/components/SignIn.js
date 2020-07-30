@@ -1,6 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
+import {
+    Paper,
+    FormControl,
+    InputLabel,
+    OutlinedInput,
+    Button
+} from '@material-ui/core';
+const styles = {
+    paper: {
+        width: "20rem", padding: "1rem"
+    },
+    input: {
+        marginBottom: "1rem"
+    },
+    button: {
+        width: "100%"
+    }
+}
 
 const SignIn = props => {
     const [email, setEmail] = useState("");
@@ -31,25 +49,25 @@ const SignIn = props => {
         <fieldset>
             <legend>Sign In</legend>
             <form onSubmit={login}>
-                <p className="form-group">
-                    <label>Email:</label>
-                    <input
+                <FormControl variant="outlined" style={styles.input}>
+                    <InputLabel>Email:</InputLabel>
+                    <OutlinedInput
                         type="email"
                         name="email"
                         onChange={e => setEmail(e.target.value)}
                         value={email}
                     />
-                </p>
-                <p className="form-group">
-                    <label>Password:</label>
-                    <input
+                </FormControl>
+                <FormControl variant="outlined" style={styles.input}>
+                    <InputLabel>Password:</InputLabel>
+                    <OutlinedInput
                         type="password"
                         name="password"
                         onChange={e => setPassword(e.target.value)}
                         value={password}
                     />
-                </p>
-                <input type="submit" value="Sign In" className="btn" />
+                </FormControl>
+                <Button type="submit" variant="contained" color="primary">Sign In</Button>
                 <p className="error-message">{errorMessage ? errorMessage : ""}</p>
             </form>
         </fieldset>
