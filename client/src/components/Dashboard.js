@@ -22,8 +22,6 @@ const Dashboard = (props) => {
         );
     };
 
-    console.log(property);
-
     return (
         <div>
             <p>{property.propertyName}</p>
