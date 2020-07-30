@@ -45,7 +45,7 @@ const SignIn = props => {
                     <input
                         type="password"
                         name="password"
-                        onChange={e +> setPassword(e.target.value)}
+                        onChange={e => setPassword(e.target.value)}
                         value={password}
                     />
                 </p>

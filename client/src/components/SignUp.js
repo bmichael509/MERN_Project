@@ -48,8 +48,8 @@ const SignUp = (props) => {
           {errors.username ? (
             <span className="error-message">{errors.username.message}</span>
           ) : (
-            ""
-          )}
+              ""
+            )}
         </div>
 
         <div className="form-group">
@@ -57,14 +57,14 @@ const SignUp = (props) => {
           <input
             type="email"
             name="email"
-            onChange={(e) => setEmaiml(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
           {errors.email ? (
             <span className="error-message">{errors.email.message}</span>
           ) : (
-            ""
-          )}
+              ""
+            )}
         </div>
 
         <div className="form-group">
@@ -78,8 +78,8 @@ const SignUp = (props) => {
           {errors.password ? (
             <span className="error-message">{errors.password.message}</span>
           ) : (
-            ""
-          )}
+              ""
+            )}
         </div>
 
         <div classname="form-group">
@@ -87,7 +87,7 @@ const SignUp = (props) => {
           <input
             type="password"
             name="confirmPassword"
-            onChange={(e = setConfirmPassword(e.target.value))}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword}
           />
           {errors.confirmPassword ? (
@@ -95,8 +95,8 @@ const SignUp = (props) => {
               {errors.confirmPassword.message}
             </span>
           ) : (
-            ""
-          )}
+              ""
+            )}
         </div>
 
         <input type="submit" value="Sign Up" className="btn" />
