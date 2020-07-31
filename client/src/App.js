@@ -37,9 +37,6 @@ function App() {
         <LogReg path="/" />
         <UserList path="/users" />
       </Router>
-      <div className="container">
-        <Link to="/users"> Get Users List</Link>
-      </div>
     </>
   );
 }
