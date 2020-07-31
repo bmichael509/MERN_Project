@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, } from '@reach/router'
+import { Link, navigate } from '@reach/router'
+import {
+    Grid,
+    FormControl,
+    Container,
+    Select,
+    Button,
+    TextField
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+
 const AddEmployee = (props) => {
     const [inputs, setInputs] = useState({
         firstName: "",
@@ -17,6 +28,36 @@ const AddEmployee = (props) => {
         notes: "",
     })
 
+    const useStyles = makeStyles((theme) => ({
+    
+    
+        TextField: {
+        padding: theme.spacing(5),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+        whiteSpace: 'nowrap',
+        marginBottom: theme.spacing(5),
+      },
+    
+}));
+
+function ContainedButtons() {
+    const classes = useStyles();
+}
+
+
+
+const styles = {
+    
+    button: {
+        width: "100%",
+        backgroundColor: "blue",
+        margin: "10px"
+    }
+
+
+
+}
     const addEmployee = (event) => {
         event.preventDefault();
         const newEmployee = {
@@ -43,36 +84,33 @@ const AddEmployee = (props) => {
     }
 
     return (
-        <form onSubmit={addEmployee} className="addEmployee">
-            <h4>Add a new renter:</h4>
+        <Container fixed>
+        <FormControl onSubmit={addEmployee} className="addEmployee">
+            <h4>Add a new Employee:</h4>
+            <Grid container spacing={2} justify="space-around" direction="row" alignItems="flex-start">
+            <Grid container item  justify="space-around">
+
             <div className="addEmployeeInput">
-                <label htmlFor="firstName">First Name:</label>
-                <input type="text" name="firstName" id="firstName" value={inputs.firstName} onChange={(event) => setInputs({ ...inputs, firstName: event.target.value })} />
+                <TextField variant="outlined" label="First Name:" InputLabelProps={{shrink: true,}} type="text" name="firstName" id="firstName" value={inputs.firstName} onChange={(event) => setInputs({ ...inputs, firstName: event.target.value })} />
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="lastName">Last Name:</label>
-                <input type="text" name="lastName" id="lastName" value={inputs.lastName} onChange={(event) => setInputs({ ...inputs, lastName: event.target.value })} />
+                <TextField variant="outlined" label="Last Name:" InputLabelProps={{shrink: true,}} type="text" name="lastName" id="lastName" value={inputs.lastName} onChange={(event) => setInputs({ ...inputs, lastName: event.target.value })} />
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="phone">Phone Number:</label>
-                <input type="number" name="phone" id="phone" value={inputs.phoneNumber} onChange={(event) => setInputs({ ...inputs, phoneNumber: event.target.value })} />
+                <TextField variant="outlined" label="Phone Number:" InputLabelProps={{shrink: true,}} type="number" name="phone" id="phone" value={inputs.phoneNumber} onChange={(event) => setInputs({ ...inputs, phoneNumber: event.target.value })} />
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="street">Street:</label>
-                <input type="text" name="street" id="street" value={inputs.street} onChange={(event) => setInputs({ ...inputs, street: event.target.value })} />
+                <TextField variant="outlined" label="Street:" InputLabelProps={{shrink: true,}} type="text" name="street" id="street" value={inputs.street} onChange={(event) => setInputs({ ...inputs, street: event.target.value })} />
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="unitNum">Unit Number:</label>
-                <input type="text" name="unitNum" id="unitNum" value={inputs.unitNum} onChange={(event) => setInputs({ ...inputs, unitNum: event.target.value })} />
+                <TextField variant="outlined" label="Unit Number:" InputLabelProps={{shrink: true,}} type="text" name="unitNum" id="unitNum" value={inputs.unitNum} onChange={(event) => setInputs({ ...inputs, unitNum: event.target.value })} />
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="city">City:</label>
-                <input type="text" name="city" id="city" value={inputs.city} onChange={(event) => setInputs({ ...inputs, city: event.target.value })} />
+                <TextField label="City:" variant="outlined" InputLabelProps={{shrink: true,}} type="text" name="city" id="city" value={inputs.city} onChange={(event) => setInputs({ ...inputs, city: event.target.value })} />
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="state">State/Province:</label>
-                <select name="state" id="state" value={inputs.state} onChange={(event) => setInputs({ ...inputs, state: event.target.value })}>
-                    <option value=""></option>
+                <Select native variant="outlined" name="state" id="state" value={inputs.state} onChange={(event) => setInputs({ ...inputs, state: event.target.value })}>
+                    <option value="">State/Province:</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -138,57 +176,44 @@ const AddEmployee = (props) => {
                     <option value="NT">Northwest Territories</option>
                     <option value="NU">Nunavut</option>
                     <option value="YT">Yukon</option>
-                </select>
+                </Select >
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="zipCode">Zipcode:</label>
-                <input type="number" name="zipCode" id="zipCode" value={inputs.zipCode} onChange={(event) => setInputs({ ...inputs, zipCode: event.target.value })} />
+                <TextField label="Zipcode:" variant="outlined" InputLabelProps={{shrink: true,}} type="number" name="zipCode" id="zipCode" value={inputs.zipCode} onChange={(event) => setInputs({ ...inputs, zipCode: event.target.value })} />
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="country">Country:</label>
-                <select name="country" id="country" value={inputs.country} onChange={(event) => setInputs({ ...inputs, country: event.target.value })}>
-                    <option value=""></option>
+                <Select native variant="outlined" label="Country" name="country" id="country" value={inputs.country} onChange={(event) => setInputs({ ...inputs, country: event.target.value })}>
+                    <option value="">Country</option>
                     <option value="USA">United States of America</option>
                     <option value="Canada">Canada</option>
-                </select>
+                </Select >
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="status">Renter's Status:</label>
-                <select name="status" id="status" value={inputs.status} onChange={(event) => setInputs({ ...inputs, status: event.target.value })}>
-                    <option value=""></option>
+                <Select native variant="outlined" name="status" id="status" value={inputs.status} onChange={(event) => setInputs({ ...inputs, status: event.target.value })}>
+                    <option value="">Employee's Status </option>
                     <option value="pending">Pending</option>
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
-                </select>
+                </Select >
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="role">Renter's Status:</label>
-                <select name="role" id="role" value={inputs.financialStatus} onChange={(event) => setInputs({ ...inputs, role: event.target.value })}>
-                    <option value=""></option>
-                    <option value="pending">Pending</option>
-                    <option value="pass">Pass</option>
-                    <option value="fail">Fail</option>
-                </select>
+                <TextField variant="outlined" label="Info Verified By:" InputLabelProps={{shrink: true,}} type="text" name="infoVerifiedBy" id="infoVerifiedBy" value={inputs.infoVerifiedBy} onChange={(event) => setInputs({ ...inputs, infoVerifiedBy: event.target.value })} />
             </div>
             <div className="addEmployeeInput">
-                <label htmlFor="infoVerifiedBy">Info Verified By:</label>
-                <input type="text" name="infoVerifiedBy" id="infoVerifiedBy" value={inputs.infoVerifiedBy} onChange={(event) => setInputs({ ...inputs, infoVerifiedBy: event.target.value })} />
+                <TextField variant="outlined" label="Additional Notes:" InputLabelProps={{shrink: true,}} type="text" name="notes" id="notes" value={inputs.notes} onChange={(event) => setInputs({ ...inputs, notes: event.target.value })} />
             </div>
-            <div className="addEmployeeInput">
-                <label htmlFor="notes">Additional Notes:</label>
-                <input type="text" name="notes" id="notes" value={inputs.notes} onChange={(event) => setInputs({ ...inputs, notes: event.target.value })} />
-            </div>
-            <div className="addEmployeeInput">
-                <label htmlFor="financialNotes">Financial Check Notes:</label>
-                <input type="text" name="financialNotes" id="financialNotes" value={inputs.financialNotes} onChange={(event) => setInputs({ ...inputs, financialNotes: event.target.value })} />
-            </div>
-            <button>Add Employee!</button>
+            </Grid>
+            <Grid>
+            <Button variant="contained" color="primary" href="#contained-buttons">Add Employee!</Button>
             {" "}
-            <button
+            <Button variant="contained" color="secondary" href="#contained-buttons"
                 onClick={(event) => { navigate("/properties") }}>
                 Cancel
-            </button>
-        </form>
+            </Button>
+            </Grid>
+            </Grid>
+        </FormControl>
+        </Container>
     );
 };
 
