@@ -46,7 +46,6 @@ const AddUnit = (props) => {
             .then((res) => {
                 property = res.data;
                 units = res.data.unit;
-                let newUnits = { unit: units.map((unit) => { return ({ _id: unit }) }) }
                 axios.post('http://localhost:8000/api/units', newUnit)
                     .then((res) => {
                         units.push(res.data._id);
