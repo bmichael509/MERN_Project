@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Address = require("./address.model").schema;
 
 // {PATH} will insert the name of the key / prop
 
@@ -10,7 +9,31 @@ const PropertySchema = new mongoose.Schema(
             required: [true, "{PATH} is required"]
         },
         address: {
-            type: Address,
+            street: {
+                type: String,
+                required: [true, "{PATH} is required"],
+                minlength: [3, "{PATH} must be at least {MINLENGTH} characters"]
+            },
+            city: {
+                type: String,
+                required: [true, "{PATH} is required"],
+                minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
+            },
+            state: {
+                type: String,
+                required: [true, "{PATH} is required"],
+                minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
+            },
+            zipCode: {
+                type: Number,
+                required: [true, "{PATH} is required"],
+                minlength: [5, "{PATH} must be at least {MINLENGTH} characters"]
+            },
+            country: {
+                type: String,
+                required: [true, "{PATH} is required"],
+                minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
+            },
             unique: true,
             required: [true, "{PATH} is required"],
         },

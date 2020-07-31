@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Deposit = require("./deposit.model").schema;
 
 // {PATH} will insert the name of the key / prop
 
@@ -26,7 +25,38 @@ const ContractSchema = new mongoose.Schema(
             required: [true, "{PATH} is required"]
         },
         deposit: {
-            type: Deposit,
+            depositAmount: {
+                type: Number,
+                required: [true, "{PATH} is required"]
+            },
+            dateReceived: {
+                type: Date,
+                required: [true, "{PATH} is required"]
+            },
+            paymentType: {
+                type: String,
+                required: [true, "{PATH} is required"]
+            },
+            checknumber: {
+                type: Number,
+                required: false
+            },
+            depositPaid: {
+                type: Boolean,
+                required: [true, "{PATH} is required"]
+            },
+            depositReturned: {
+                type: Number,
+                required: [true, "{PATH} is required"]
+            },
+            status: {
+                type: String,
+                required: [true, "{PATH} is required"]
+            },
+            notes: {
+                type: String,
+                required: false,
+            },
             required: [true, "{PATH} is required"]
         },
         unitType: {

@@ -1,12 +1,62 @@
 const mongoose = require("mongoose");
-const Person = require("./person.model").schema;
 
 // {PATH} will insert the name of the key / prop
 
 const EmployeeSchema = new mongoose.Schema(
     {
         employee: {
-            type: Person,
+
+            firstName: {
+                type: String,
+                required: [true, "{PATH} is required"],
+                minlength: [3, "{PATH} must be at least {MINLENGTH} characters"]
+            },
+            lastName: {
+                type: String,
+                required: [true, "{PATH} is required"],
+                minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
+            },
+            phoneNumber: {
+                type: String,
+                required: [true, "{PATH} is required"],
+                minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
+            },
+            currentAddress: {
+                street: {
+                    type: String,
+                    required: [true, "{PATH} is required"],
+                    minlength: [3, "{PATH} must be at least {MINLENGTH} characters"]
+                },
+                city: {
+                    type: String,
+                    required: [true, "{PATH} is required"],
+                    minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
+                },
+                state: {
+                    type: String,
+                    required: [true, "{PATH} is required"],
+                    minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
+                },
+                zipCode: {
+                    type: Number,
+                    required: [true, "{PATH} is required"],
+                    minlength: [5, "{PATH} must be at least {MINLENGTH} characters"]
+                },
+                country: {
+                    type: String,
+                    required: [true, "{PATH} is required"],
+                    minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
+                },
+                required: false
+            },
+            status: {
+                type: String,
+                required: [true, "{PATH} is required"]
+            },
+            notes: {
+                type: String,
+                required: false,
+            },
             unique: true,
             required: [true, "{PATH} is required"],
         },
