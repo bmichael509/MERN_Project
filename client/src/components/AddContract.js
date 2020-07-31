@@ -156,7 +156,7 @@ const AddContract = (props) => {
             axios
                 .post('http://localhost:8000/api/contracts/', newContract)
                 .then((res) => {
-                    navigate("/dashboard");
+                    navigate("/admin/dashboard");
                 })
                 .catch((err) => {
                     console.log(err.response);
@@ -166,7 +166,7 @@ const AddContract = (props) => {
             axios
                 .put(`http://localhost:8000/api/contracts/${id}`, newContract)
                 .then((res) => {
-                    navigate("/dashboard");
+                    navigate("/admin/contracts");
                 })
                 .catch((err) => {
                     console.log(err.response);

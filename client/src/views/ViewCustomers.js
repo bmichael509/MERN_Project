@@ -49,10 +49,10 @@ const ViewCustomers = (props) => {
                     {customers.map((customer) => {
                         return (
                             <tr key={customer._id}>
-                                <td><Link to={`/customers/details/${customer._id}`}>{customer.customer.lastName}</Link></td>
+                                <td><Link to={`/admin/customers/details/${customer._id}`}>{customer.customer.lastName}</Link></td>
                                 <td>{customer.customer.firstName}</td>
                                 <td>{customer.customer.phoneNumber}</td>
-                                <td>{customer.customer.address.street}, {customer.customer.address.city}, {customer.customer.address.state} {customer.customer.address.zipCode} {customer.customer.address.country}</td>
+                                <td>{customer.customer.currentAddress.street}, {customer.customer.currentAddress.city}, {customer.customer.currentAddress.state} {customer.customer.currentAddress.zipCode} {customer.customer.currentAddress.country}</td>
                                 <td>{customer.customer.status}</td>
                                 <td>{customer.customer.notes}</td>
                             </tr>

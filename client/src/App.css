@@ -43,7 +43,6 @@ body{
 
 .addCustomer{
   width: 50%;
-  background-color: rgba(200, 200, 200, 1);
   text-align: center;
   display: inline-block;
 }
@@ -51,10 +50,12 @@ body{
 .addCustomerInput {
   width: 45%;
   display: inline-block;
-  text-align: left;
   margin: 5px;
   min-height: 30px;
-  vertical-align: top;
+}
+
+.addCustomerInput input {
+  text-align: center;
 }
 
 .addCustomer label{

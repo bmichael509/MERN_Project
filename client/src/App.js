@@ -4,6 +4,7 @@ import ViewContracts from './views/ViewContracts';
 import { Link, Router, Redirect, navigate } from "@reach/router";
 import "./App.css";
 import AddCustomer from "./components/AddCustomer";
+import CustomerDetails from "./views/ViewCustomerDetails";
 import LogReg from "./views/LogReg";
 import UserList from "./views/UserList";
 import axios from "axios";
@@ -51,13 +52,15 @@ function App() {
       <Router>
         <Main path="/main" />
         <ViewCustomers path="/admin/customers" />
+        <CustomerDetails path="/admin/customers/details/:_id" />
+        <AddCustomer action="update" path="/admin/customers/details/:id/edit" />
         <ViewContracts path="/admin/contracts" />
         <ViewUnits path="/admin/units" />
         <ViewUnitTypes path="/admin/unitTypes" />
         <ViewProperties path="/admin/properties" />
         <UnitDetails path="/units/details/:_id" />
         <UnitTypeDetails path="/unitType/details/:_id" />
-        <AddCustomer path="/admin/customers/new" />
+        <AddCustomer action="create" path="/admin/customers/new" />
         <AdminNewUnit path="/admin/units/new" />
         <AdminNewUnitType path="/admin/unitTypes/new" />
         <AdminNewContract path="/admin/contracts/new" />
