@@ -19,6 +19,7 @@ import AdminNewUnitType from './views/AdminNewUnitType';
 import AdminNewContract from './views/AdminNewContract';
 import UnitTypeDetails from './views/UnitTypeDetails';
 import EditUnitType from './views/EditUnitType';
+import ViewProperties from './views/ViewProperties';
 
 function App() {
   const logout = () => {
@@ -52,6 +53,7 @@ function App() {
         <ViewContracts path="/admin/contracts" />
         <ViewUnits path="/admin/units" />
         <ViewUnitTypes path="/admin/unitTypes" />
+        <ViewProperties path="/admin/properties" />
         <UnitDetails path="/units/details/:_id" />
         <UnitTypeDetails path="/unitType/details/:_id" />
         <AddCustomer path="/admin/customers/new" />

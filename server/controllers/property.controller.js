@@ -12,7 +12,7 @@ module.exports = {
             });
     },
     getAll(req, res) {
-        Property.find()
+        Property.find().populate({ path: 'unit' })
             .then((propertys) => {
                 res.json(propertys);
             })
