@@ -111,7 +111,7 @@ const styles = {
                     <TextField variant="outlined" label="Last Name:" InputLabelProps={{shrink: true,}} type="text" name="lastName" id="lastName" value={inputs.lastName} onChange={(event) => setInputs({ ...inputs, lastName: event.target.value })} />
                 </div>
                 <div className="addCustomerInput">
-                    <TextField variant="outlined" label="Phone Number:" InputLabelProps={{shrink: true,}} type="number" name="phone" id="phone" value={inputs.phoneNumber} onChange={(event) => setInputs({ ...inputs, phoneNumber: event.target.value })} />
+                    <TextField variant="outlined" InputLabelProps={{shrink: true,}} label="Phone Number:"  type="number" name="phone" id="phone" value={inputs.phoneNumber} onChange={(event) => setInputs({ ...inputs, phoneNumber: event.target.value })} />
                 </div>
                 <div className="addCustomerInput">
                     <TextField variant="outlined" label="Street:" InputLabelProps={{shrink: true,}} type="text" name="street" id="street" value={inputs.street} onChange={(event) => setInputs({ ...inputs, street: event.target.value })} />
@@ -212,7 +212,7 @@ const styles = {
                 </div>
                 <div className="addCustomerInput">
                     <Select native variant="outlined" name="financialStatus" id="financialStatus" value={inputs.financialStatus} onChange={(event) => setInputs({ ...inputs, financialStatus: event.target.value })}>
-                        <option value="">Renter's Status:</option>
+                        <option value="">Financial Check:</option>
                         <option value="pending">Pending</option>
                         <option value="pass">Pass</option>
                         <option value="fail">Fail</option>
