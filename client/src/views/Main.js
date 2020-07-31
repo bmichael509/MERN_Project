@@ -7,7 +7,6 @@ import Dashboard from "../components/Dashboard";
 const Main = (props) => {
     const [property, setProperty] = useState(null);
     const [allProperties, setAllProperties] = useState(null);
-    const [units, setUnits] = useState(null);
     const [searchFor, setSearchFor] = useState("");
 
     const propertySearch = (event) => {
@@ -33,7 +32,6 @@ const Main = (props) => {
                 axios.get(`http://localhost:8000/api/propertyUnits/${res.data[0]._id}`)
                     .then((res) => {
                         setProperty(res.data);
-                        setUnits(res.data.unit)
                     })
                     .catch((err) => console.log(err));
             })
@@ -91,7 +89,7 @@ const Main = (props) => {
             </select>
             {/* <button onClick={navigate(`/dashboard/${property._id}`)}>Go to Property</button> */}
 
-            <Dashboard property={property} units={units} />
+            <Dashboard property={property} />
         </div>
     )
 }

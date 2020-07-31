@@ -13,7 +13,7 @@ module.exports = {
             });
     },
     getAll(req, res) {
-        UnitType.find()
+        UnitType.find().populate({ path: "property", populate: "unit" })
             .then((unitTypes) => {
                 res.json(unitTypes);
             })

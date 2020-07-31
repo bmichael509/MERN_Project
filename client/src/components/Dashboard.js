@@ -1,32 +1,44 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios"
 import Loading from "../components/Loading";
+import { Link } from "@reach/router";
 
 const Dashboard = (props) => {
-    const { property, units } = props;
-    // useEffect(() => {
-    //     axios
-    //         .get("http://localhost:8000/api/propertyUnits")
-    //         .then((res) => {
-    //             setProperty(res.data);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // }, []);
+    const { property } = props;
+    const [units, setUnits] = useState(null);
+
+    useEffect(() => {
+        setUnits(property.unit.sort((a, b) => {
+            if (a.name < b.name) { return -1 };
+            return (a.name > b.name ? 1 : 0);
+        }))
+    }, [property]);
 
     // If there are no authors display this
-    if (property == null) {
+    if (property == null || units === null) {
         return (
             <Loading />
         );
     };
 
+    const styleStatus = (status) => {
+        if (status === 'available') {
+            return { color: '#3AFF00' }
+        }
+        else if (status === 'rented') {
+            return { color: 'red' }
+        }
+        else {
+            return { color: 'black' }
+        };
+    };
+
     return (
         <div>
-            <p>{property.propertyName}</p>
-            <p>{property.address.street}</p>
-            <table>
+            <section className='propertyHeader'>
+                <h1>{property.propertyName}</h1>
+                <h3>{property.address.street}, {property.address.city}, {property.address.state} {property.address.zipCode}</h3>
+            </section>
+            <table className='dashboardUnits'>
                 <thead>
                     <tr>
                         <th>Unit Number</th>
@@ -38,21 +50,23 @@ const Dashboard = (props) => {
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {property.unit.map((apartment) => {
-                        return (
-                            <tr key={apartment.unitType._id}>
-                                <td>{apartment.name}</td>
-                                <td>{apartment.unitType.name}</td>
-                                <td>{apartment.unitType.bedrooms}</td>
-                                <td>{apartment.unitType.bathrooms}</td>
-                                <td>{apartment.unitType.squareFootage}</td>
-                                <td>{apartment.unitType.rentalAmount}</td>
-                                <td>{apartment.status}</td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
+                <div>
+                    <tbody>
+                        {units.map((apartment) => {
+                            return (
+                                <tr key={apartment._id}>
+                                    <td><Link to={`/units/details/${apartment._id}`}>{apartment.name}</Link></td>
+                                    <td>{apartment.unitType.name}</td>
+                                    <td>{apartment.unitType.bedrooms}</td>
+                                    <td>{apartment.unitType.bathrooms}</td>
+                                    <td>{apartment.unitType.squareFootage} sqft</td>
+                                    <td>${apartment.unitType.rentalAmount}</td>
+                                    <td style={styleStatus(apartment.status)}>{apartment.status}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </div>
             </table>
         </div>
     )
