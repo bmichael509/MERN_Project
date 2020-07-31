@@ -15,8 +15,6 @@ const ViewUnits = (props) => {
             .catch((err) => console.log(err));
     }, []);
 
-    console.log(units);
-
     const styleStatus = (status) => {
         if (status === 'available') {
             return { color: '#3AFF00' }
@@ -58,7 +56,7 @@ const ViewUnits = (props) => {
                     {units.map((unit) => {
                         return (
                             <tr>
-                                <td>{unit.name}</td>
+                                <td><Link to={`/units/details/${unit._id}`}>{unit.name}</Link></td>
                                 <td>{unit.property.propertyName}</td>
                                 <td>{unit.issue.length}</td>
                                 <td>${unit.unitType.rentalAmount}</td>

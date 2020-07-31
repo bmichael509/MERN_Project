@@ -12,6 +12,7 @@ import Main from './views/Main';
 import UnitDetails from './views/UnitDetails';
 import Admin from './views/Admin';
 import ViewUnits from './views/ViewUnits';
+import AdminNewUnit from './views/AdminNewUnit';
 
 function App() {
   const logout = () => {
@@ -46,6 +47,7 @@ function App() {
         <ViewUnits path="/admin/units" />
         <UnitDetails path="/units/details/:_id" />
         <AddCustomer path="/admin/customers/new" />
+        <AdminNewUnit path="/admin/units/new" />
         <Admin path="/admin" />
         <LogReg path="/" />
         <UserList path="/users" />
