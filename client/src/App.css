@@ -162,3 +162,110 @@ body{
   font-weight: bold;
   font-size: 1.25rem;
 }
+
+body{
+  text-align: center;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.addCustomer{
+  width: 60%;
+  text-align: center;
+  display: inline-block;
+}
+
+.addCustomerInput {
+  width: 45%;
+  display: inline-block;
+  text-align: left;
+  margin: 5px;
+  min-height: 30px;
+
+}
+
+.addCustomer label{
+  display: inline-block;
+}
+
+.addCustomer button {
+  display: inline-block;
+  margin: 10px 20%;
+}
+
+.contractInput {
+  width: 40%;
+  text-align: left;
+  display: inline-block;
+}
+
+.addContract {
+  width: 60%;
+  text-align: center;
+  display: inline-block;
+
+}
+
+.addEmployee {
+  width: 60%;
+  text-align: center;
+  display: inline-block;
+}
+
+.addEmployeeInput {
+  width: 40%;
+  text-align: left;
+  display: inline-block;
+  margin: 5px;
+
+}
+
+.addProperty {
+  width: 60%;
+  text-align: center;
+  display: inline-block;
+}
+
+.addPropertyInput {
+  width: 40%;
+  text-align: left;
+  display: inline-block;
+  margin: 5px;
+} 
