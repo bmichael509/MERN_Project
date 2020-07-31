@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PermanentDrawerLeft() {
     const adminPages = ['Contracts', 'Customers', 'Employees', 'Issues', 'Properties', 'Units', 'Unit Types', 'Users'];
-    const adminLinks = ['contracts', 'customers', 'cmployees', 'issues', 'properties', 'units', 'unitTypes', 'users'];
+    const adminLinks = ['contracts', 'customers', 'employees', 'issues', 'properties', 'units', 'unitTypes', 'users'];
     const classes = useStyles();
 
     return (

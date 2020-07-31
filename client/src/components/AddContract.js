@@ -13,16 +13,16 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-    
-    
-        textField: {
+
+
+    textField: {
         padding: theme.spacing(5),
         textAlign: 'center',
         color: theme.palette.text.secondary,
         whiteSpace: 'nowrap',
         marginBottom: theme.spacing(5),
-      },
-    
+    },
+
 }));
 
 function ContainedButtons() {
@@ -32,7 +32,7 @@ function ContainedButtons() {
 
 
 const styles = {
-    
+
     button: {
         width: "100%",
         backgroundColor: "blue",
@@ -67,7 +67,7 @@ const AddContract = (props) => {
     const [unitTypes, setUnitTypes] = useState(null);
     const [allUnits, setAllUnits] = useState(null);
     const [units, setUnits] = useState(null);
-    const [allCustomers, setCustomers] = useState(null);
+    const [allCustomers, setAllCustomers] = useState(null);
     const [customers, setCustomers] = useState(null);
     const [deposit, setDeposit] = useState(null);
 
@@ -182,21 +182,21 @@ const AddContract = (props) => {
 
                     <h3>Add a new contract:</h3>
                     <Grid container spacing={2} justify="space-around" direction="row" alignItems="flex-start">
-                        <Grid container item  justify="space-around">
+                        <Grid container item justify="space-around">
                             <div className="contractInput">
-                                <TextField variant="outlined" type="number" name="length" id="length" label="Contract Length (Months):" InputLabelProps={{shrink: true,}} value={inputs.length} onChange={(event) => setInputs({ ...inputs, length: event.target.value })} />
+                                <TextField variant="outlined" type="number" name="length" id="length" label="Contract Length (Months):" InputLabelProps={{ shrink: true, }} value={inputs.length} onChange={(event) => setInputs({ ...inputs, length: event.target.value })} />
                             </div>
                             <div style={{ gridColumnEnd: 'span 1' }} className="contractInput">
-                                <TextField variant="outlined" type="date" name="moveInDate" label="Move in Date: "InputLabelProps={{shrink: true,}} id="moveInDate" value={inputs.moveInDate} onChange={(event) => setInputs({ ...inputs, moveInDate: event.target.value })} />
+                                <TextField variant="outlined" type="date" name="moveInDate" label="Move in Date: " InputLabelProps={{ shrink: true, }} id="moveInDate" value={inputs.moveInDate} onChange={(event) => setInputs({ ...inputs, moveInDate: event.target.value })} />
                             </div>
                         </Grid>
                         <Grid container item justify="space-around" >
                             <div className="contractInput">
-                                <TextField variant="outlined" type="date" name="moveOutDate" label="Move Out Date:" InputLabelProps={{shrink: true,}}id="moveOutDate" value={inputs.moveOutDate} onChange={(event) => setInputs({ ...inputs, moveOutDate: event.target.value })} />
+                                <TextField variant="outlined" type="date" name="moveOutDate" label="Move Out Date:" InputLabelProps={{ shrink: true, }} id="moveOutDate" value={inputs.moveOutDate} onChange={(event) => setInputs({ ...inputs, moveOutDate: event.target.value })} />
                             </div>
 
                             <div className="contractInput">
-                                <TextField variant="outlined" type="number" name="amount" id="amount"  label="Monthly Amount: " InputLabelProps={{shrink: true,}}  value={inputs.amount} onChange={(event) => setInputs({ ...inputs, amount: event.target.value })} />
+                                <TextField variant="outlined" type="number" name="amount" id="amount" label="Monthly Amount: " InputLabelProps={{ shrink: true, }} value={inputs.amount} onChange={(event) => setInputs({ ...inputs, amount: event.target.value })} />
                             </div>
                         </Grid>
                         <Grid container item justify="space-around">
@@ -211,12 +211,12 @@ const AddContract = (props) => {
                             </div>
 
                             <div className="contractInput">
-                                <TextField type="number" variant="outlined" name="depositAmount" id="depositAmount" label="Deposit Amount" InputLabelProps={{shrink: true,}} value={inputs.depositAmount} onChange={(event) => setInputs({ ...inputs, depositAmount: event.target.value })} />
+                                <TextField type="number" variant="outlined" name="depositAmount" id="depositAmount" label="Deposit Amount" InputLabelProps={{ shrink: true, }} value={inputs.depositAmount} onChange={(event) => setInputs({ ...inputs, depositAmount: event.target.value })} />
                             </div>
                         </Grid>
                         <Grid container item justify="space-around">
                             <div className="contractInput">
-                                <TextField type="date" id="dateReceived" htmlFor="dateReceived" label="Deposit Date Received:" variant="outlined" InputLabelProps={{shrink: true,}} value={inputs.dateReceived} onChange={(event) => setInputs({ ...inputs, dateReceived: event.target.value })} />
+                                <TextField type="date" id="dateReceived" htmlFor="dateReceived" label="Deposit Date Received:" variant="outlined" InputLabelProps={{ shrink: true, }} value={inputs.dateReceived} onChange={(event) => setInputs({ ...inputs, dateReceived: event.target.value })} />
                             </div>
 
                             <div className="contractInput">
@@ -232,7 +232,7 @@ const AddContract = (props) => {
                         </Grid>
                         <Grid container item justify="space-around">
                             <div className="contractInput">
-                                <TextField type="number" name="checkNum" id="checkNum" InputLabelProps={{shrink: true,}} variant="outlined" label="Check Number" value={inputs.checkNum} onChange={(event) => setInputs({ ...inputs, checkNum: event.target.value })} />
+                                <TextField type="number" name="checkNum" id="checkNum" InputLabelProps={{ shrink: true, }} variant="outlined" label="Check Number" value={inputs.checkNum} onChange={(event) => setInputs({ ...inputs, checkNum: event.target.value })} />
                             </div>
                             <div className="contractInput">
                                 <Select native name="depositPaid" id="depositPaid" value={inputs.depositPaid} onChange={(event) => setInputs({ ...inputs, depositPaid: event.target.value })}>
@@ -243,56 +243,56 @@ const AddContract = (props) => {
                             </div>
                         </Grid>
                         <Grid container item justify="space-around">
-                        <div className="contractInput">
-                            <TextField variant="outlined" style={styles} type="number" name="depositReturned" InputLabelProps={{shrink: true,}}id="depositReturned" label="Deposit Amount Returned" value={inputs.depositReturned} onChange={(event) => setInputs({ ...inputs, depositReturned: event.target.value })} />
-                        </div>
-                        <div className="contractInput">
-                            <TextField variant="outlined" type="text" name="depositNotes" id="depositNotes" InputLabelProps={{shrink: true,}} label="Deposit Notes" value={inputs.depositNotes} onChange={(event) => setInputs({ ...inputs, depositNotes: event.target.value })} />
-                        </div>
-                    </Grid>
-                    <Grid container item justify="space-around"  >
-                        <div className="contractInput">
-                            <Select native name="unitType" id="unitType" value={inputs.unitTypeID} onChange={(event) => setInputs({ ...inputs, unitTypeID: event.target.value })}>
-                                <option value="">Select Unit Type:</option>
-                                {unitTypes.map((unitType) => {
-                                    return (
-                                        <option value={unitType._id}>{unitType.name}</option>
-                                    );
-                                })}
-                            </Select>
-                        </div>
-                        <div className="contractInput">
-                            <Select native name="customer" id="customer" value={inputs.customerID} onChange={(event) => setInputs({ ...inputs, customerID: event.target.value })}>
-                                <option value="">Select Customer:</option>
-                                {customers.map((customer) => {
-                                    return (
-                                        <option value={customer._id}>{customer.customer.firstName} {customer.customer.lastName}</option>
-                                    );
-                                })}
-                            </Select>
-                        </div>
-                    </Grid>
-                    <Grid container item justify="space-around">
-                        <div className="contractInput">
-                            <Select native name="unit" id="unit" value={inputs.unitID} onChange={(event) => setInputs({ ...inputs, unitID: event.target.value })}>
-                                <option value="">Select Unit:</option>
-                                {units.map((unit) => {
-                                    return (
-                                        <option value={unit._id}>{unit.name}</option>
-                                    );
-                                })}
-                            </Select>
-                        </div>
-                        <div className="contractInput">
-                            <TextField  variant="outlined" type="text" name="notes" id="notes" InputLabelProps={{shrink: true,}} label="Contract Notes" value={inputs.notes} onChange={(event) => setInputs({ ...inputs, notes: event.target.value })} />
-                        </div>
-                    </Grid>
-                    <Grid>
+                            <div className="contractInput">
+                                <TextField variant="outlined" style={styles} type="number" name="depositReturned" InputLabelProps={{ shrink: true, }} id="depositReturned" label="Deposit Amount Returned" value={inputs.depositReturned} onChange={(event) => setInputs({ ...inputs, depositReturned: event.target.value })} />
+                            </div>
+                            <div className="contractInput">
+                                <TextField variant="outlined" type="text" name="depositNotes" id="depositNotes" InputLabelProps={{ shrink: true, }} label="Deposit Notes" value={inputs.depositNotes} onChange={(event) => setInputs({ ...inputs, depositNotes: event.target.value })} />
+                            </div>
+                        </Grid>
+                        <Grid container item justify="space-around"  >
+                            <div className="contractInput">
+                                <Select native name="unitType" id="unitType" value={inputs.unitTypeID} onChange={(event) => setInputs({ ...inputs, unitTypeID: event.target.value })}>
+                                    <option value="">Select Unit Type:</option>
+                                    {unitTypes.map((unitType) => {
+                                        return (
+                                            <option value={unitType._id}>{unitType.name}</option>
+                                        );
+                                    })}
+                                </Select>
+                            </div>
+                            <div className="contractInput">
+                                <Select native name="customer" id="customer" value={inputs.customerID} onChange={(event) => setInputs({ ...inputs, customerID: event.target.value })}>
+                                    <option value="">Select Customer:</option>
+                                    {customers.map((customer) => {
+                                        return (
+                                            <option value={customer._id}>{customer.customer.firstName} {customer.customer.lastName}</option>
+                                        );
+                                    })}
+                                </Select>
+                            </div>
+                        </Grid>
+                        <Grid container item justify="space-around">
+                            <div className="contractInput">
+                                <Select native name="unit" id="unit" value={inputs.unitID} onChange={(event) => setInputs({ ...inputs, unitID: event.target.value })}>
+                                    <option value="">Select Unit:</option>
+                                    {units.map((unit) => {
+                                        return (
+                                            <option value={unit._id}>{unit.name}</option>
+                                        );
+                                    })}
+                                </Select>
+                            </div>
+                            <div className="contractInput">
+                                <TextField variant="outlined" type="text" name="notes" id="notes" InputLabelProps={{ shrink: true, }} label="Contract Notes" value={inputs.notes} onChange={(event) => setInputs({ ...inputs, notes: event.target.value })} />
+                            </div>
+                        </Grid>
+                        <Grid>
 
 
-                        <Button variant="contained" color="secondary" href="#contained-buttons" onClick={(event) => navigate('/')}>Cancel</Button>
-                        <Button variant="contained" color="primary" href="#contained-buttons">Submit</Button>
-                    </Grid>
+                            <Button variant="contained" color="secondary" href="#contained-buttons" onClick={(event) => navigate('/')}>Cancel</Button>
+                            <Button variant="contained" color="primary" href="#contained-buttons">Submit</Button>
+                        </Grid>
                     </Grid>
                 </FormControl>
             </Container>

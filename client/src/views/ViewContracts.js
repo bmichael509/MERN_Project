@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
 import Loading from "../components/Loading";
+import AdminBar from "../components/AdminBar";
 
 const ViewContracts = (props) => {
     const [contracts, setContracts] = useState(null);
@@ -22,8 +23,9 @@ const ViewContracts = (props) => {
 
     return (
         <>
-            <Link to="/admin/contracts/new">New</Link>
-            <table>
+            <Link to="/admin/contracts/new" className="new">New</Link>
+            <AdminBar />
+            <table className='dashboardUnits'>
                 <thead>
                     <tr>
                         <th>Move In Date</th>
