@@ -80,7 +80,7 @@ const AddProperty = (props) => {
     return (
         <>
             <Container fixed>
-                <FormControl className="addProperty">
+                <FormControl className="addUnit">
                     <h4>Add a Property</h4>
                     <Grid container spacing={2} justify="space-around" direction="row" alignItems="flex-start">
                         <Grid container item justify="space-around">

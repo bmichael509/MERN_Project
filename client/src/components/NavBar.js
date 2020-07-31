@@ -29,6 +29,7 @@ const NavBar = (props) => {
           <Tab style={style} label="Issues" component={Link} to="/issues" />
           <Tab style={style} label="Alerts" component={Link} to="/alerts" />
           <Tab style={style} label="Admin" component={Link} to="/admin" />
+          <Tab style={style} label="Logout" component={Link} to="/" />
 
 
         </Tabs>

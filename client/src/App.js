@@ -47,7 +47,6 @@ function App() {
       <NavBar />
       <div className="jumbotron">
         <h1>MERN Users</h1>
-        <button onClick={logout}>Logout</button>
       </div>
       <Router>
         <Main path="/main" />
@@ -71,9 +70,6 @@ function App() {
         <LogReg path="/" />
         <UserList path="/users" />
       </Router>
-      <div className="container">
-        <Link to="/users"> Get Users List</Link>
-      </div>
     </>
   );
 }
