@@ -3,13 +3,14 @@ import axios from 'axios';
 import AdminBar from '../components/AdminBar';
 import AddUnit from '../components/AddUnit';
 
-const AdminNewUnit = (props) => {
+const EditUnit = (props) => {
+    const { id } = props;
     return (
         <>
             <AdminBar />
-            <AddUnit action="create" />
+            <AddUnit action="update" id={id} />
         </>
     );
 };
 
-export default AdminNewUnit;
+export default EditUnit;

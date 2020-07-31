@@ -4,6 +4,7 @@ import { navigate } from "@reach/router";
 import Loading from "./Loading";
 
 const AddUnit = (props) => {
+    const { action, id } = props;
     const [inputs, setInputs] = useState({
         name: "",
         status: "",
@@ -22,6 +23,20 @@ const AddUnit = (props) => {
         axios.get('http://localhost:8000/api/properties')
             .then((res) => setProperties(res.data))
             .catch((err) => console.log(err));
+
+        if (action === 'update') {
+            axios.get(`http://localhost:8000/api/units/${props.id}`)
+                .then((res) => {
+                    setInputs({
+                        name: res.data.name,
+                        status: res.data.status,
+                        unitTypeID: res.data.unitType._id,
+                        propertyID: res.data.property,
+                        notes: res.data.notes
+                    });
+                })
+                .catch((err) => console.log(err));
+        };
     }, []);
 
     if (unitTypes === null || properties === null) {
@@ -30,38 +45,56 @@ const AddUnit = (props) => {
         );
     };
 
-    const addUnit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        const newUnit = {
-            name: inputs.name,
-            status: inputs.status,
-            unitType: { _id: inputs.unitTypeID },
-            property: { _id: inputs.propertyID },
-            notes: inputs.notes,
+        if (action === 'create') {
+            const newUnit = {
+                name: inputs.name,
+                status: inputs.status,
+                unitType: { _id: inputs.unitTypeID },
+                property: { _id: inputs.propertyID },
+                notes: inputs.notes,
+            };
+            // let property = properties.filter((property) => property._id === inputs.propertyID);
+            let property = null;
+            let units = null;
+            axios.get('http://localhost:8000/api/properties/' + inputs.propertyID)
+                .then((res) => {
+                    property = res.data;
+                    units = res.data.unit;
+                    axios.post('http://localhost:8000/api/units', newUnit)
+                        .then((res) => {
+                            units.push(res.data._id);
+                            let newUnits = { unit: units.map((unit) => { return ({ _id: unit }) }) }
+                            axios.put('http://localhost:8000/api/properties/' + property._id, newUnits)
+                                .then(res => navigate('/admin/units'))
+                                .catch((err) => console.log(err.response));
+                        })
+                        .catch((err) => console.log(err.response));
+                })
+                .catch((err) => console.log(err.response));
+        }
+        else if (action === 'update') {
+            console.log('update function here');
+            const newUnit = {
+                name: inputs.name,
+                status: inputs.status,
+                unitType: { _id: inputs.unitTypeID },
+                property: { _id: inputs.propertyID },
+                notes: inputs.notes,
+            };
+            axios.put(`http://localhost:8000/api/units/${id}`, newUnit)
+                .then((res) => {
+                    console.log(res.data, 'has been updated to the database');
+                    navigate('/main');
+                })
+                .catch((err) => console.log(err));
         };
-        // let property = properties.filter((property) => property._id === inputs.propertyID);
-        let property = null;
-        let units = null;
-        axios.get('http://localhost:8000/api/properties/' + inputs.propertyID)
-            .then((res) => {
-                property = res.data;
-                units = res.data.unit;
-                axios.post('http://localhost:8000/api/units', newUnit)
-                    .then((res) => {
-                        units.push(res.data._id);
-                        let newUnits = { unit: units.map((unit) => { return ({ _id: unit }) }) }
-                        axios.put('http://localhost:8000/api/properties/' + property._id, newUnits)
-                            .then(res => navigate('/admin/units'))
-                            .catch((err) => console.log(err.response));
-                    })
-                    .catch((err) => console.log(err.response));
-            })
-            .catch((err) => console.log(err.response));
     }
 
     return (
         <>
-            <form onSubmit={addUnit} className='addCustomer'>
+            <form onSubmit={handleSubmit} className='addCustomer'>
                 <label htmlFor="name">Unit Name/Number:</label>
                 <input type="text" name="name" id="name" value={inputs.name} onChange={(event) => setInputs({ ...inputs, name: event.target.value })} />
                 <label htmlFor="status">Unit Status:</label>
@@ -85,7 +118,7 @@ const AddUnit = (props) => {
                     <option value="" disabled={true}>Select Property</option>
                     {properties.map((property) => {
                         return (
-                            <option value={property._id}>{property.propertyName}</option>
+                            <option key={property._id} value={property._id}>{property.propertyName}</option>
                         );
                     })}
                 </select>

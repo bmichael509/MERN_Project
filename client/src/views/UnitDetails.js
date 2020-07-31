@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loading from "../components/Loading";
+import { navigate } from "@reach/router";
 
 const UnitDetails = (props) => {
     const [unit, setUnit] = useState(null);
@@ -29,13 +30,11 @@ const UnitDetails = (props) => {
         );
     };
 
-    console.log(unit);
-
     return (
         <>
             <h1 style={{ margin: '5px 0' }}>Unit: {unit.name}</h1>
             <h2 style={{ margin: '5px 0' }}>Status: <span style={styleStatus()}>{unit.status}</span></h2>
-            <button style={{ margin: '0 0 5px 0' }}>Edit</button>
+            <button style={{ margin: '0 0 5px 0' }} onClick={(event) => navigate(`/units/${props._id}/edit`)}>Edit</button>
             <section>
                 <table className="dashboardUnits">
                     <thead>
