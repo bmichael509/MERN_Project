@@ -56,7 +56,7 @@ const Dashboard = (props) => {
                             return (
                                 <tr key={apartment._id}>
                                     <td><Link to={`/units/details/${apartment._id}`}>{apartment.name}</Link></td>
-                                    <td>{apartment.unitType.name}</td>
+                                    <td><Link to={`/unitType/details/${apartment.unitType._id}`}>{apartment.unitType.name}</Link></td>
                                     <td>{apartment.unitType.bedrooms}</td>
                                     <td>{apartment.unitType.bathrooms}</td>
                                     <td>{apartment.unitType.squareFootage} sqft</td>

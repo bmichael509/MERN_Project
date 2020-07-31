@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 import Loading from "./Loading";
 
 const UnitTypeForm = (props) => {
-    const { action } = props;
+    const { action, id } = props;
     const [inputs, setInputs] = useState({
         name: "",
         bathrooms: "",
@@ -21,6 +21,23 @@ const UnitTypeForm = (props) => {
         axios.get('http://localhost:8000/api/properties')
             .then((res) => setProperties(res.data))
             .catch((err) => console.log(err));
+
+        if (action === 'update') {
+            axios.get('http://localhost:8000/api/unitTypes/' + id)
+                .then((res) => {
+                    setInputs({
+                        name: res.data.name,
+                        bathrooms: res.data.bathrooms,
+                        bedrooms: res.data.bedrooms,
+                        squareFootage: res.data.squareFootage,
+                        rentalAmount: res.data.rentalAmount,
+                        propertyID: res.data.property._id,
+                        status: res.data.status,
+                        notes: res.data.notes
+                    })
+                })
+                .catch((err) => console.log(err));
+        }
     }, []);
 
     if (properties === null) {
@@ -42,12 +59,26 @@ const UnitTypeForm = (props) => {
                 status: inputs.status,
                 notes: inputs.notes,
             };
+
             axios.post('http://localhost:8000/api/unitTypes', newUnitType)
-                .then((res) => navigate('/'))
+                .then((res) => navigate('/admin/unitTypes'))
                 .catch((err) => console.log(err));
         }
         else if (action === "update") {
-            console.log('update function goes here');
+            const newUnitType = {
+                name: inputs.name,
+                bathrooms: inputs.bathrooms,
+                bedrooms: inputs.bedrooms,
+                squareFootage: inputs.squareFootage,
+                rentalAmount: inputs.rentalAmount,
+                property: { _id: inputs.propertyID },
+                status: inputs.status,
+                notes: inputs.notes,
+            };
+
+            axios.put('http://localhost:8000/api/unitTypes/' + id, newUnitType)
+                .then((res) => navigate('/unitType/details/' + id))
+                .catch((err) => console.log(err));
         };
     };
 
@@ -74,7 +105,7 @@ const UnitTypeForm = (props) => {
                     <option value="">Select Property </option>
                     {properties.map((property) => {
                         return (
-                            <option value={property._id}>{property.propertyName}</option>
+                            <option key={property._id} value={property._id}>{property.propertyName}</option>
                         );
                     })}
                 </select>
@@ -85,7 +116,7 @@ const UnitTypeForm = (props) => {
                 <label htmlFor="notes">Notes: </label>
                 <input type="text" name="notes" id="notes" value={inputs.notes} onChange={(event) => setInputs({ ...inputs, notes: event.target.value })} />
                 <br />
-                <button onClick={(event) => navigate('/')}>Cancel</button>
+                <button onClick={(event) => navigate('/admin/unitTypes')}>Cancel</button>
                 <br />
                 <button>Submit</button>
             </form>

@@ -15,8 +15,6 @@ const ViewUnitTypes = (props) => {
             .catch((err) => console.log(err));
     }, []);
 
-    console.log(unitTypes);
-
     if (unitTypes === null) {
         return (
             <>
@@ -53,7 +51,7 @@ const ViewUnitTypes = (props) => {
                     {unitTypes.map((type) => {
                         return (
                             <tr key={type._id}>
-                                <td>{type.name}</td>
+                                <td> <Link to={`/unitType/details/${type._id}`}>{type.name}</Link></td>
                                 <td>{type.property.propertyName}</td>
                                 <td>{type.bedrooms}</td>
                                 <td>{type.bathrooms}</td>
