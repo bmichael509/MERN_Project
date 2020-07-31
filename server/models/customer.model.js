@@ -56,8 +56,6 @@ const CustomerSchema = new mongoose.Schema(
                 type: String,
                 required: false,
             },
-            unique: true,
-            required: [true, "{PATH} is required"],
         },
         previousAddress: {
             street: {
@@ -85,7 +83,6 @@ const CustomerSchema = new mongoose.Schema(
                 required: [true, "{PATH} is required"],
                 minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
             },
-            required: [true, "{PATH} is required"]
         },
         infoVerifiedBy: {
             type: String,

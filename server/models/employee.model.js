@@ -57,8 +57,6 @@ const EmployeeSchema = new mongoose.Schema(
                 type: String,
                 required: false,
             },
-            unique: true,
-            required: [true, "{PATH} is required"],
         },
         role: {
             type: String,

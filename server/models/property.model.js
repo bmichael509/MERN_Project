@@ -34,8 +34,6 @@ const PropertySchema = new mongoose.Schema(
                 required: [true, "{PATH} is required"],
                 minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
             },
-            unique: true,
-            required: [true, "{PATH} is required"],
         },
         employee: [{
             type: mongoose.Schema.Types.ObjectId,

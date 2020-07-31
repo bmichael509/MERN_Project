@@ -57,7 +57,6 @@ const ContractSchema = new mongoose.Schema(
                 type: String,
                 required: false,
             },
-            required: [true, "{PATH} is required"]
         },
         unitType: {
             type: mongoose.Schema.Types.ObjectId,
