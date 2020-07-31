@@ -20,6 +20,7 @@ import AdminNewContract from './views/AdminNewContract';
 import UnitTypeDetails from './views/UnitTypeDetails';
 import EditUnitType from './views/EditUnitType';
 import ViewProperties from './views/ViewProperties';
+import AdminNewProperty from './views/AdminNewProperty';
 
 function App() {
   const logout = () => {
@@ -60,6 +61,7 @@ function App() {
         <AdminNewUnit path="/admin/units/new" />
         <AdminNewUnitType path="/admin/unitTypes/new" />
         <AdminNewContract path="/admin/contracts/new" />
+        <AdminNewProperty path="/admin/properties/new" />
         <EditUnit path="/units/:id/edit" />
         <EditUnitType path="/unitType/:id/edit" />
         <Admin path="/admin" />

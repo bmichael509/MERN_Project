@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import axios from 'axios';
+import { navigate } from "@reach/router";
+
 import {
     Paper,
     FormControl,
@@ -46,15 +49,13 @@ const styles = {
 
 const AddProperty = (props) => {
     const [inputs, setInputs] = useState({
-        address: {
-            street: "",
-            unitNum: "",
-            city: "",
-            state: "",
-            zip: "",
-            country: ""
-        },
-        employee: "",
+        propertyName: "",
+        street: "",
+        city: "",
+        state: "",
+        zip: "",
+        country: "",
+        status: "",
         notes: "",
     })
 
@@ -63,8 +64,22 @@ const AddProperty = (props) => {
 
     const addProperty = (event) => {
         event.preventDefault();
-        console.log("addProperty:", inputs);
-    }
+        const newProperty = {
+            propertyName: inputs.propertyName,
+            address: {
+                street: inputs.street,
+                city: inputs.city,
+                state: inputs.state,
+                zipCode: inputs.zip,
+                country: inputs.country
+            },
+            status: inputs.status,
+            notes: inputs.notes,
+        };
+        axios.post('http://localhost:8000/api/properties', newProperty)
+            .then((res) => navigate('/admin/properties'))
+            .catch((err) => console.log(err.response));
+    };
 
     return (
         <>
@@ -74,7 +89,7 @@ const AddProperty = (props) => {
                     <div >
                         <FormControl variant="outlined" style={styles.input}>
                             <InputLabel htmlFor="propertyName">Property Name:</InputLabel>
-                            <OutlinedInput type="text" name="propertyName" id="propertyName" value={inputs.propertyName} onChange={(event) => setInputs({ ...inputs, firstName: event.target.value })} />
+                            <OutlinedInput type="text" name="propertyName" id="propertyName" value={inputs.propertyName} onChange={(event) => setInputs({ ...inputs, propertyName: event.target.value })} />
                         </FormControl>
                     </div>
                     <div >
@@ -182,8 +197,8 @@ const AddProperty = (props) => {
 
                     <div >
                         <FormControl variant="outlined" style={styles.input}>
-                            <InputLabel htmlFor="employee">Employee:</InputLabel>
-                            <OutlinedInput type="text" name="employee" id="employee" value={inputs.employee} onChange={(event) => setInputs({ ...inputs, employee: event.target.value })} />
+                            <InputLabel htmlFor="status">Status:</InputLabel>
+                            <OutlinedInput type="text" name="status" id="status" value={inputs.status} onChange={(event) => setInputs({ ...inputs, status: event.target.value })} />
                         </FormControl>
                     </div>
                     <div >
@@ -192,10 +207,8 @@ const AddProperty = (props) => {
                             <OutlinedInput type="text" name="notes" id="notes" value={inputs.notes} onChange={(event) => setInputs({ ...inputs, notes: event.target.value })} />
                         </FormControl>
                     </div>
-                    <Button variant="contained" color="secondary" href="#contained-buttons">Cancel</Button>
-                    <Button variant="contained" color="primary" href="#contained-buttons">Submit</Button>
-
-
+                    <Button variant="contained" color="secondary" type="button" onClick={(event) => navigate('/admin/properties')}>Cancel</Button>
+                    <Button variant="contained" color="primary" type="submit">Submit</Button>
                 </form>
             </Paper>
         </>

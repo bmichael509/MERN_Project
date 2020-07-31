@@ -9,7 +9,7 @@ const ViewProperties = (props) => {
     useEffect(() => {
         axios.get('http://localhost:8000/api/properties')
             .then((res) => setProperties(res.data))
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(err.response));
     }, [])
 
     if (properties === null) {
@@ -21,8 +21,6 @@ const ViewProperties = (props) => {
             </>
         )
     }
-
-    console.log(properties);
 
     return (
         <>
