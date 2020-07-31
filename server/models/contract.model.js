@@ -2,51 +2,52 @@ const mongoose = require("mongoose");
 
 // {PATH} will insert the name of the key / prop
 
-const CustomerSchema = new mongoose.Schema(
+const ContractSchema = new mongoose.Schema(
     {
-        customer: {
-            firstName: {
-                type: String,
-                required: [true, "{PATH} is required"],
-                minlength: [3, "{PATH} must be at least {MINLENGTH} characters"]
+        length: {
+            type: Number,
+            required: [true, "{PATH} is required"]
+        },
+        moveInDate: {
+            type: Date,
+            required: [true, "{PATH} is required"]
+        },
+        moveOutDate: {
+            type: Date,
+            required: [true, "{PATH} is required"]
+        },
+        monthlyAmount: {
+            type: Number,
+            required: [true, "{PATH} is required"]
+        },
+        status: {
+            type: String,
+            required: [true, "{PATH} is required"]
+        },
+        deposit: {
+            depositAmount: {
+                type: Number,
+                required: [true, "{PATH} is required"]
             },
-            lastName: {
-                type: String,
-                required: [true, "{PATH} is required"],
-                minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
+            dateReceived: {
+                type: Date,
+                required: [true, "{PATH} is required"]
             },
-            phoneNumber: {
+            paymentType: {
                 type: String,
-                required: [true, "{PATH} is required"],
-                minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
+                required: [true, "{PATH} is required"]
             },
-            currentAddress: {
-                street: {
-                    type: String,
-                    required: [true, "{PATH} is required"],
-                    minlength: [3, "{PATH} must be at least {MINLENGTH} characters"]
-                },
-                city: {
-                    type: String,
-                    required: [true, "{PATH} is required"],
-                    minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
-                },
-                state: {
-                    type: String,
-                    required: [true, "{PATH} is required"],
-                    minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
-                },
-                zipCode: {
-                    type: Number,
-                    required: [true, "{PATH} is required"],
-                    minlength: [5, "{PATH} must be at least {MINLENGTH} characters"]
-                },
-                country: {
-                    type: String,
-                    required: [true, "{PATH} is required"],
-                    minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
-                },
+            checknumber: {
+                type: Number,
                 required: false
+            },
+            depositPaid: {
+                type: Boolean,
+                required: [true, "{PATH} is required"]
+            },
+            depositReturned: {
+                type: Number,
+                required: [true, "{PATH} is required"]
             },
             status: {
                 type: String,
@@ -56,58 +57,32 @@ const CustomerSchema = new mongoose.Schema(
                 type: String,
                 required: false,
             },
-            unique: true,
-            required: [true, "{PATH} is required"],
-        },
-        previousAddress: {
-            street: {
-                type: String,
-                required: [true, "{PATH} is required"],
-                minlength: [3, "{PATH} must be at least {MINLENGTH} characters"]
-            },
-            city: {
-                type: String,
-                required: [true, "{PATH} is required"],
-                minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
-            },
-            state: {
-                type: String,
-                required: [true, "{PATH} is required"],
-                minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
-            },
-            zipCode: {
-                type: Number,
-                required: [true, "{PATH} is required"],
-                minlength: [5, "{PATH} must be at least {MINLENGTH} characters"]
-            },
-            country: {
-                type: String,
-                required: [true, "{PATH} is required"],
-                minlength: [2, "{PATH} must be at least {MINLENGTH} characters"]
-            },
             required: [true, "{PATH} is required"]
         },
-        infoVerifiedBy: {
+        unitType: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "UnitType",
+            required: [true, "{PATH} is required"],
+        },
+        customer: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Customer",
+            required: [true, "{PATH} is required"],
+        }],
+        unit: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Unit",
+            required: [true, "{PATH} is required"],
+        },
+        notes: {
             type: String,
             required: false,
         },
-        customerFinancialCheck: {
-            status: {
-                type: String,
-                required: [true, "{PATH} is required"],
-                minlength: [3, "{PATH} must be at least {MINLENGTH} characters"]
-            },
-            notes: {
-                type: String,
-                required: false,
-            },
-            required: false
-        }
     },
     { timestamps: true }
 );
 
 //Creates the cities (auto pluralizes the name) collection and enforces the CitySchema on any new documents that are added to the collection
-const Customer = mongoose.model("Customer", CustomerSchema);
+const Contract = mongoose.model("Contract", ContractSchema);
 
-module.exports = Customer;
+module.exports = Contract;
