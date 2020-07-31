@@ -4,6 +4,7 @@ import { navigate } from "@reach/router";
 import Loading from "./Loading";
 
 const AddContract = (props) => {
+    const { action, id } = props;
     const [inputs, setInputs] = useState({
         length: "",
         moveInDate: "",
@@ -22,13 +23,18 @@ const AddContract = (props) => {
         unitID: "",
         notes: "",
     });
+    const [allUnitTypes, setAllUnitTypes] = useState(null);
     const [unitTypes, setUnitTypes] = useState(null);
+    const [allUnits, setAllUnits] = useState(null);
     const [units, setUnits] = useState(null);
+    const [allCustomers, setCustomers] = useState(null);
     const [customers, setCustomers] = useState(null);
+    const [deposit, setDeposit] = useState(null);
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/customers')
             .then((res) => {
+                setAllCustomers(res.data)
                 setCustomers(res.data.sort((a, b) => {
                     if (a.customer.lastName.toLowerCase() < b.customer.lastName.toLowerCase()) { return -1 };
                     return (a.customer.lastName.toLowerCase() > b.customer.lastName.toLowerCase() ? 1 : 0);
@@ -37,12 +43,44 @@ const AddContract = (props) => {
             .catch((err) => console.log(err));
 
         axios.get('http://localhost:8000/api/units')
-            .then((res) => setUnits(res.data))
-            .cath((err) => console.log(err));
+            .then((res) => {
+                setUnits(res.data)
+                setAllUnits(res.data)
+            })
+            .catch((err) => console.log(err));
 
         axios.get('http://localhost:8000/api/unitTypes')
-            .then((res) => setUnitTypes(res.data))
+            .then((res) => {
+                setUnitTypes(res.data)
+                setAllUnitTypes(res.data)
+            })
             .catch((err) => console.log(err));
+
+        if (action === 'update') {
+            axios.get(`http://localhost:8000/api/contracts/${props.id}`)
+                .then((res) => {
+                    setInputs({
+                        length: res.data.length,
+                        moveInDate: res.data.moveInDate,
+                        moveOutDate: res.data.moveInDate,
+                        amount: res.data.monthlyAmount,
+                        status: res.data.status,
+                        depositAmount: res.data.deposit.depositAmount,
+                        dateReceived: res.data.deposit.depositAmount,
+                        paymentType: res.data.deposit.paymentType,
+                        checkNum: res.data.deposit.checkNum,
+                        depositPaid: res.data.deposit.depositPaid,
+                        depositReturned: res.data.deposit.depositReturned,
+                        depositNotes: res.data.deposit.notes,
+                        unitTypeID: res.data.unitType._id,
+                        customerID: res.data.checkNum,
+                        unitID: res.data.unit._id,
+                        notes: res.data.notes,
+                    });
+                    setDeposit(res.data.deposit._id);
+                })
+                .catch((err) => console.log(err));
+        };
     }, []);
 
     if (unitTypes === null || units === null || customers === null) {
@@ -68,15 +106,31 @@ const AddContract = (props) => {
                 depositReturned: inputs.depositReturned,
                 notes: inputs.depositNotes,
             },
-            unitType: inputs.unitTypeID,
-            customer: inputs.customerID,
-            unit: inputs.unitID,
+            unitType: { _id: inputs.unitTypeID },
+            customer: { _id: inputs.customerID },
+            unit: { _id: inputs.unitID },
             notes: inputs.notes,
-        };
-
-        axios.post('http://localhost:8000/api/contracts', newContract)
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+        }
+        if (action === 'create') {
+            axios
+                .post('http://localhost:8000/api/contracts/', newContract)
+                .then((res) => {
+                    navigate("/dashboard");
+                })
+                .catch((err) => {
+                    console.log(err.response);
+                });
+        }
+        else if (action === "update") {
+            axios
+                .put(`http://localhost:8000/api/contracts/${id}`, newContract)
+                .then((res) => {
+                    navigate("/dashboard");
+                })
+                .catch((err) => {
+                    console.log(err.response);
+                });
+        }
     }
 
     return (
