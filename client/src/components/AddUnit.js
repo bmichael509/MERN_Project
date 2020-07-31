@@ -75,7 +75,6 @@ const AddUnit = (props) => {
                 .catch((err) => console.log(err.response));
         }
         else if (action === 'update') {
-            console.log('update function here');
             const newUnit = {
                 name: inputs.name,
                 status: inputs.status,
